@@ -1,0 +1,79 @@
+# Libraries
+import numpy as np
+import random
+import time
+import matplotlib.pyplot as plt
+
+
+# Assignment 1
+
+# 1.1 Problem 1
+
+# Function that finds the dot product of an array
+def dot_product(firstArray, secondArray):
+    dotted = np.dot(firstArray, secondArray)
+    return dotted
+    raise NotImplementedError()
+
+# Asks user array size
+n = int(input('How many ints are in your arrays: '))
+arr1 = []
+arr2 = []
+
+# Allows user to enter int of array
+for x in range(n):
+    x = int(input('Please enter the next digit of your first array: '))
+    arr1.append(x)
+
+# Print Statement to signify when done with array
+print('---------------------')
+print('DONE WITH FIRST ARRAY')
+print('---------------------')
+
+# Adds int to array
+for x in range(n):
+    x = int(input('Please enter the next digit of your second array: '))
+    arr2.append(x)
+
+# Print Statement to signify when done with second array
+print('----------------------')
+print('DONE WITH SECOND ARRAY')
+print('----------------------')
+
+# Prints dot product of array
+dotted_array = dot_product(arr1, arr2)
+print("The dot product of both of your arrays is: " + str(dotted_array))
+
+
+# 1.2 Problem 2
+def n_random_ints(intNumber):
+    max32 = (2 ** 24 - 1) - 1
+    rand_int_array = []
+    for x in range(-max32, max32):
+        rand_int_array.append(x)
+    ints = random.sample(rand_int_array, intNumber)
+    return ints
+
+
+
+# 1.3 Problem 3
+intNumber = input('Enter number of integers you would like to calculate: ')
+intNumber = int(intNumber)
+start = time.time()
+if intNumber > 1000:
+    print('Choose a smaller number')
+    intNumber = input('How many random ints do you want: ')
+    intNumber = int(intNumber)
+problem_3_a = n_random_ints(intNumber)
+end = time.time()
+total_time = end-start
+total_time = round(total_time, 4)
+print('This took ' + str(total_time) + ' seconds to process.')
+plt.plot(problem_3_a)
+plt.axis([0, intNumber - 1, min(problem_3_a), max(problem_3_a)])
+plt.xlabel('Index')
+plt.ylabel('Integer')
+plt.title('1st Graph Results')
+plt.show()
+print(problem_3_a)
+# problem_3_b = n_random_ints(1000)
